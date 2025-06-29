@@ -384,9 +384,18 @@ function add_empty_results(scheme_name) {
   results[scheme_name] = {
     scheme: schemes[scheme_name],
     qwerty: {},
+    qfmlwy: {},
+    qgmlwy: {},
     dvorak: {},
     colemak: {},
+    colemakdh: {},
     workman: {},
+    halmak: {},
+    minimak: {},
+    norman: {},
+    asset: {},
+    qwpr: {},
+    toea: {},
   };
 }
 
