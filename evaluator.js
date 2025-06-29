@@ -447,8 +447,15 @@ function show_scheme(scheme_name) {
   var layout = get_layout();
   var assignments = scheme.split(',');
   for (var i = 0; i < assignments.length; ++i) {
+    if (!assignments[i]) {
+      continue;
+    }
     var items = assignments[i].split('=');
     var key = key_name_to_key(items[0]);
+    if (!layout[key]) {
+      console.log('Invalid key: ' + key);
+      continue;
+    }
     var x = layout[key][0];
     var y = layout[key][1];
     document.getElementById('py_' + y + x).value = items[1];
@@ -720,6 +727,10 @@ function hit_key_strokes(key_strokes) {
   for (var i = 0; i < key_strokes.length; ++i) {
     var key = key_strokes[i];
     var coordinates = layout[key];
+    if (!coordinates) {
+      console.log('Invalid key in stroke: ' + key);
+      continue;
+    }
     var x = coordinates[0], y = coordinates[1];
 
     // Calculate distance to move.
